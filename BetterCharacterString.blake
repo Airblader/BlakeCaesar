@@ -1,0 +1,234 @@
+USES CharacterString, IntegerNumber, BetterIntegerNumber;
+
+BEGINOBJECT BetterCharacterString INHERITSFROM CharacterString;
+
+    BEGINCONSTANTMETHOD CharacterString getAt(IntegerNumber position);
+        CharacterString result.CREATE();
+        IntegerNumber one.CREATE();
+
+        one.MUTATORsetCharacterString("1");
+
+        result.MUTATORset(ME.CONSTANTgetLeft(position.CONSTANTadd(one.CONSTANTCOPY())));
+        result.MUTATORset(result.CONSTANTgetRight(one.CONSTANTCOPY()));
+
+        one.EMPTY();
+        RETURN(result.CONSTANTCOPY());
+    ENDCONSTANTMETHOD getAt;
+
+    BEGINCONSTANTMETHOD CharacterString encrypt(IntegerNumber key);
+        BetterIntegerNumber code.CREATE();
+        IntegerNumber twentySix.CREATE();
+        BetterCharacterString result.CREATE();
+
+        BEGINIF(ME.CONSTANTisAlpha());
+            twentySix.MUTATORsetCharacterString("26");
+            result.MUTATORset(ME.CONSTANTCOPY());
+            code.MUTATORset(result.CONSTANTconvertToCode());
+            code.MUTATORset(code.CONSTANTadd(key.CONSTANTCOPY()));
+            code.MUTATORset(code.CONSTANTmod(twentySix.CONSTANTCOPY()));
+
+            result.MUTATORset(code.CONSTANTconvertToCharacter());
+        ELSE(ME.CONSTANTisAlpha());
+            result.MUTATORset(ME.CONSTANTCOPY());
+        ENDIF(ME.CONSTANTisAlpha());
+
+        twentySix.EMPTY();
+        code.EMPTY();
+        RETURN(result.CONSTANTCOPY());
+    ENDCONSTANTMETHOD encrypt;
+
+    BEGINCONSTANTMETHOD IntegerNumber convertToCode();
+        IntegerNumber result.CREATE();
+        CharacterString uppercase.CREATE();
+
+        uppercase.MUTATORset(ME.CONSTANTCOPY());
+        uppercase.MUTATORtoUpperCase();
+
+        BEGINIF(uppercase.CONSTANTequals("A"));
+            result.MUTATORsetCharacterString("0");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("A"));
+        ENDIF(uppercase.CONSTANTequals("A"));
+
+        BEGINIF(uppercase.CONSTANTequals("B"));
+            result.MUTATORsetCharacterString("1");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("B"));
+        ENDIF(uppercase.CONSTANTequals("B"));
+
+        BEGINIF(uppercase.CONSTANTequals("C"));
+            result.MUTATORsetCharacterString("2");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("C"));
+        ENDIF(uppercase.CONSTANTequals("C"));
+
+        BEGINIF(uppercase.CONSTANTequals("D"));
+            result.MUTATORsetCharacterString("3");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("D"));
+        ENDIF(uppercase.CONSTANTequals("D"));
+
+        BEGINIF(uppercase.CONSTANTequals("E"));
+            result.MUTATORsetCharacterString("4");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("E"));
+        ENDIF(uppercase.CONSTANTequals("E"));
+
+        BEGINIF(uppercase.CONSTANTequals("F"));
+            result.MUTATORsetCharacterString("5");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("F"));
+        ENDIF(uppercase.CONSTANTequals("F"));
+
+        BEGINIF(uppercase.CONSTANTequals("G"));
+            result.MUTATORsetCharacterString("6");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("G"));
+        ENDIF(uppercase.CONSTANTequals("G"));
+
+        BEGINIF(uppercase.CONSTANTequals("H"));
+            result.MUTATORsetCharacterString("7");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("H"));
+        ENDIF(uppercase.CONSTANTequals("H"));
+
+        BEGINIF(uppercase.CONSTANTequals("I"));
+            result.MUTATORsetCharacterString("8");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("I"));
+        ENDIF(uppercase.CONSTANTequals("I"));
+
+        BEGINIF(uppercase.CONSTANTequals("J"));
+            result.MUTATORsetCharacterString("9");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("J"));
+        ENDIF(uppercase.CONSTANTequals("J"));
+
+        BEGINIF(uppercase.CONSTANTequals("K"));
+            result.MUTATORsetCharacterString("10");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("K"));
+        ENDIF(uppercase.CONSTANTequals("K"));
+
+        BEGINIF(uppercase.CONSTANTequals("L"));
+            result.MUTATORsetCharacterString("11");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("L"));
+        ENDIF(uppercase.CONSTANTequals("L"));
+
+        BEGINIF(uppercase.CONSTANTequals("M"));
+            result.MUTATORsetCharacterString("12");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("M"));
+        ENDIF(uppercase.CONSTANTequals("M"));
+
+        BEGINIF(uppercase.CONSTANTequals("N"));
+            result.MUTATORsetCharacterString("13");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("N"));
+        ENDIF(uppercase.CONSTANTequals("N"));
+
+        BEGINIF(uppercase.CONSTANTequals("O"));
+            result.MUTATORsetCharacterString("14");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("O"));
+        ENDIF(uppercase.CONSTANTequals("O"));
+
+        BEGINIF(uppercase.CONSTANTequals("P"));
+            result.MUTATORsetCharacterString("15");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("P"));
+        ENDIF(uppercase.CONSTANTequals("P"));
+
+        BEGINIF(uppercase.CONSTANTequals("Q"));
+            result.MUTATORsetCharacterString("16");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("Q"));
+        ENDIF(uppercase.CONSTANTequals("Q"));
+
+        BEGINIF(uppercase.CONSTANTequals("R"));
+            result.MUTATORsetCharacterString("17");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("R"));
+        ENDIF(uppercase.CONSTANTequals("R"));
+
+        BEGINIF(uppercase.CONSTANTequals("S"));
+            result.MUTATORsetCharacterString("18");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("S"));
+        ENDIF(uppercase.CONSTANTequals("S"));
+
+        BEGINIF(uppercase.CONSTANTequals("T"));
+            result.MUTATORsetCharacterString("19");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("T"));
+        ENDIF(uppercase.CONSTANTequals("T"));
+
+        BEGINIF(uppercase.CONSTANTequals("U"));
+            result.MUTATORsetCharacterString("20");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("U"));
+        ENDIF(uppercase.CONSTANTequals("U"));
+
+        BEGINIF(uppercase.CONSTANTequals("V"));
+            result.MUTATORsetCharacterString("21");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("V"));
+        ENDIF(uppercase.CONSTANTequals("V"));
+
+        BEGINIF(uppercase.CONSTANTequals("W"));
+            result.MUTATORsetCharacterString("22");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("W"));
+        ENDIF(uppercase.CONSTANTequals("W"));
+
+        BEGINIF(uppercase.CONSTANTequals("X"));
+            result.MUTATORsetCharacterString("23");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("X"));
+        ENDIF(uppercase.CONSTANTequals("X"));
+
+        BEGINIF(uppercase.CONSTANTequals("Y"));
+            result.MUTATORsetCharacterString("24");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("Y"));
+        ENDIF(uppercase.CONSTANTequals("Y"));
+
+        BEGINIF(uppercase.CONSTANTequals("Z"));
+            result.MUTATORsetCharacterString("25");
+            uppercase.EMPTY();
+            RETURN(result.CONSTANTCOPY());
+        ELSE(uppercase.CONSTANTequals("Z"));
+        ENDIF(uppercase.CONSTANTequals("Z"));
+
+        uppercase.EMPTY();
+        result.MUTATORsetCharacterString("0");
+        RETURN(result.CONSTANTCOPY());
+    ENDCONSTANTMETHOD convertToCode;
+
+ENDOBJECT BetterCharacterString;

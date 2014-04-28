@@ -1,0 +1,48 @@
+USES BetterCharacterString, CharacterString, IntegerNumber;
+
+BEGINPROGRAM Encrypt;
+    BetterCharacterString input.CREATE();
+    BetterCharacterString output.CREATE();
+    BetterCharacterString current.CREATE();
+    CharacterString mode.CREATE();
+    IntegerNumber key.CREATE();
+    IntegerNumber twentySix.CREATE();
+    IntegerNumber counter.CREATE();
+
+    twentySix.MUTATORsetCharacterString("26");
+
+    OUTPUT("Text to en-/decrypt: ");
+    input.MUTATORset(INPUTLINE);
+
+    OUTPUT("Type 'encypt' or 'decrypt': ");
+    mode.MUTATORset(INPUTLINE);
+
+    OUTPUT("Secret Key: ");
+    key.MUTATORsetCharacterString(INPUTLINE);
+
+    BEGINIF(mode.CONSTANTequals("decrypt"));
+        key.MUTATORset(twentySix.CONSTANTsubtract(key.CONSTANTCOPY()));
+    ELSE(mode.CONSTANTequals("decrypt"));
+    ENDIF(mode.CONSTANTequals("decrypt"));
+
+    counter.MUTATORsetCharacterString("0");
+    output.MUTATORset("");
+    BEGINLOOPUNTIL (counter.CONSTANTequals(input.CONSTANTgetLength()));
+        current.MUTATORset(input.CONSTANTgetAt(counter.CONSTANTCOPY()));
+        output.MUTATORappend(current.CONSTANTencrypt(key.CONSTANTCOPY()));
+
+        counter.MUTATORset(counter.CONSTANTaddCharacterString("1"));
+    ENDLOOPUNTIL (counter.CONSTANTequals(input.CONSTANTgetLength()));
+
+    OUTPUT("En-/Decoded message: ");
+    OUTPUT(output.CONSTANTCOPY());
+    OUTPUTLINE("");
+
+    input.EMPTY();
+    output.EMPTY();
+    current.EMPTY();
+    mode.EMPTY();
+    twentySix.EMPTY();
+    key.EMPTY();
+    counter.EMPTY();
+ENDPROGRAM Encrypt;

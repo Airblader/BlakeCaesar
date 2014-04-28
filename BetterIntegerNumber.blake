@@ -1,0 +1,173 @@
+USES IntegerNumber, BooleanValue, CharacterString;
+
+BEGINOBJECT BetterIntegerNumber INHERITSFROM IntegerNumber;
+
+    BEGINCONSTANTMETHOD BooleanValue greaterThanOrEqualTo(IntegerNumber other);
+        BooleanValue equal.CREATE();
+        BooleanValue greater.CREATE();
+        BooleanValue result.CREATE();
+
+        equal.MUTATORset(ME.CONSTANTequals(other.CONSTANTCOPY()));
+        greater.MUTATORset(ME.CONSTANTgreaterThan(other.CONSTANTCOPY()));
+        result.MUTATORset(equal.CONSTANTor(greater.CONSTANTCOPY()));
+
+        equal.EMPTY();
+        greater.EMPTY();
+
+        RETURN(result.CONSTANTCOPY());
+    ENDCONSTANTMETHOD greaterThanOrEqualTo;
+
+    BEGINCONSTANTMETHOD IntegerNumber mod(IntegerNumber modulus);
+        BetterIntegerNumber step.CREATE();
+        BetterIntegerNumber result.CREATE();
+
+        step.MUTATORsetCharacterString("0");
+        BEGINLOOPUNTIL(step.CONSTANTgreaterThanOrEqualTo(ME.CONSTANTCOPY()));
+            step.MUTATORset(step.CONSTANTadd(modulus.CONSTANTCOPY()));
+        ENDLOOPUNTIL(step.CONSTANTgreaterThanOrEqualTo(ME.CONSTANTCOPY()));
+        result.MUTATORset(ME.CONSTANTsubtract(step.CONSTANTCOPY()));
+
+        BEGINIF(result.CONSTANTlessThanCharacterString("0"));
+            result.MUTATORset(result.CONSTANTadd(modulus.CONSTANTCOPY()));
+        ELSE(result.CONSTANTlessThanCharacterString("0"));
+        ENDIF(result.CONSTANTlessThanCharacterString("0"));
+
+        step.EMPTY();
+        RETURN(result.CONSTANTCOPY());
+    ENDCONSTANTMETHOD mod;
+
+    BEGINCONSTANTMETHOD CharacterString convertToCharacter();
+        BEGINIF(ME.CONSTANTequalsCharacterString("0"));
+            RETURN("A");
+        ELSE(ME.CONSTANTequalsCharacterString("0"));
+        ENDIF(ME.CONSTANTequalsCharacterString("0"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("1"));
+            RETURN("B");
+        ELSE(ME.CONSTANTequalsCharacterString("1"));
+        ENDIF(ME.CONSTANTequalsCharacterString("1"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("2"));
+            RETURN("C");
+        ELSE(ME.CONSTANTequalsCharacterString("2"));
+        ENDIF(ME.CONSTANTequalsCharacterString("2"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("3"));
+            RETURN("D");
+        ELSE(ME.CONSTANTequalsCharacterString("3"));
+        ENDIF(ME.CONSTANTequalsCharacterString("3"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("4"));
+            RETURN("E");
+        ELSE(ME.CONSTANTequalsCharacterString("4"));
+        ENDIF(ME.CONSTANTequalsCharacterString("4"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("5"));
+            RETURN("F");
+        ELSE(ME.CONSTANTequalsCharacterString("5"));
+        ENDIF(ME.CONSTANTequalsCharacterString("5"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("6"));
+            RETURN("G");
+        ELSE(ME.CONSTANTequalsCharacterString("6"));
+        ENDIF(ME.CONSTANTequalsCharacterString("6"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("7"));
+            RETURN("H");
+        ELSE(ME.CONSTANTequalsCharacterString("7"));
+        ENDIF(ME.CONSTANTequalsCharacterString("7"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("8"));
+            RETURN("I");
+        ELSE(ME.CONSTANTequalsCharacterString("8"));
+        ENDIF(ME.CONSTANTequalsCharacterString("8"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("9"));
+            RETURN("J");
+        ELSE(ME.CONSTANTequalsCharacterString("9"));
+        ENDIF(ME.CONSTANTequalsCharacterString("9"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("10"));
+            RETURN("K");
+        ELSE(ME.CONSTANTequalsCharacterString("10"));
+        ENDIF(ME.CONSTANTequalsCharacterString("10"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("11"));
+            RETURN("L");
+        ELSE(ME.CONSTANTequalsCharacterString("11"));
+        ENDIF(ME.CONSTANTequalsCharacterString("11"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("12"));
+            RETURN("M");
+        ELSE(ME.CONSTANTequalsCharacterString("12"));
+        ENDIF(ME.CONSTANTequalsCharacterString("12"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("13"));
+            RETURN("N");
+        ELSE(ME.CONSTANTequalsCharacterString("13"));
+        ENDIF(ME.CONSTANTequalsCharacterString("13"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("14"));
+            RETURN("O");
+        ELSE(ME.CONSTANTequalsCharacterString("14"));
+        ENDIF(ME.CONSTANTequalsCharacterString("14"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("15"));
+            RETURN("P");
+        ELSE(ME.CONSTANTequalsCharacterString("15"));
+        ENDIF(ME.CONSTANTequalsCharacterString("15"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("16"));
+            RETURN("Q");
+        ELSE(ME.CONSTANTequalsCharacterString("16"));
+        ENDIF(ME.CONSTANTequalsCharacterString("16"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("17"));
+            RETURN("R");
+        ELSE(ME.CONSTANTequalsCharacterString("17"));
+        ENDIF(ME.CONSTANTequalsCharacterString("17"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("18"));
+            RETURN("S");
+        ELSE(ME.CONSTANTequalsCharacterString("18"));
+        ENDIF(ME.CONSTANTequalsCharacterString("18"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("19"));
+            RETURN("T");
+        ELSE(ME.CONSTANTequalsCharacterString("19"));
+        ENDIF(ME.CONSTANTequalsCharacterString("19"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("20"));
+            RETURN("U");
+        ELSE(ME.CONSTANTequalsCharacterString("20"));
+        ENDIF(ME.CONSTANTequalsCharacterString("20"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("21"));
+            RETURN("V");
+        ELSE(ME.CONSTANTequalsCharacterString("21"));
+        ENDIF(ME.CONSTANTequalsCharacterString("21"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("22"));
+            RETURN("W");
+        ELSE(ME.CONSTANTequalsCharacterString("22"));
+        ENDIF(ME.CONSTANTequalsCharacterString("22"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("23"));
+            RETURN("X");
+        ELSE(ME.CONSTANTequalsCharacterString("23"));
+        ENDIF(ME.CONSTANTequalsCharacterString("23"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("24"));
+            RETURN("Y");
+        ELSE(ME.CONSTANTequalsCharacterString("24"));
+        ENDIF(ME.CONSTANTequalsCharacterString("24"));
+
+        BEGINIF(ME.CONSTANTequalsCharacterString("25"));
+            RETURN("Z");
+        ELSE(ME.CONSTANTequalsCharacterString("25"));
+        ENDIF(ME.CONSTANTequalsCharacterString("25"));
+
+        RETURN("");
+    ENDCONSTANTMETHOD convertToCharacter;
+
+ENDOBJECT BetterIntegerNumber;
