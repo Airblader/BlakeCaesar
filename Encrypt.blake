@@ -11,32 +11,39 @@ BEGINPROGRAM Encrypt;
 
     twentySix.MUTATORsetCharacterString("26");
 
-    OUTPUT("Text to en-/decrypt: ");
-    input.MUTATORset(INPUTLINE);
+    input.MUTATORset("yes");
+    BEGINLOOPUNTIL(input.CONSTANTequals("no"));
+        OUTPUTLINE("");
+        OUTPUT("Text to en-/decrypt: ");
+        input.MUTATORset(INPUTLINE);
 
-    OUTPUT("Type 'encypt' or 'decrypt': ");
-    mode.MUTATORset(INPUTLINE);
+        OUTPUT("Type 'encypt' or 'decrypt': ");
+        mode.MUTATORset(INPUTLINE);
 
-    OUTPUT("Secret Key: ");
-    key.MUTATORsetCharacterString(INPUTLINE);
+        OUTPUT("Secret Key: ");
+        key.MUTATORsetCharacterString(INPUTLINE);
+ 
+        BEGINIF(mode.CONSTANTequals("decrypt"));
+            key.MUTATORset(twentySix.CONSTANTsubtract(key.CONSTANTCOPY()));
+        ELSE(mode.CONSTANTequals("decrypt"));
+        ENDIF(mode.CONSTANTequals("decrypt"));
 
-    BEGINIF(mode.CONSTANTequals("decrypt"));
-        key.MUTATORset(twentySix.CONSTANTsubtract(key.CONSTANTCOPY()));
-    ELSE(mode.CONSTANTequals("decrypt"));
-    ENDIF(mode.CONSTANTequals("decrypt"));
+        counter.MUTATORsetCharacterString("0");
+        output.MUTATORset("");
+        BEGINLOOPUNTIL (counter.CONSTANTequals(input.CONSTANTgetLength()));
+            current.MUTATORset(input.CONSTANTgetAt(counter.CONSTANTCOPY()));
+            output.MUTATORappend(current.CONSTANTencrypt(key.CONSTANTCOPY()));
 
-    counter.MUTATORsetCharacterString("0");
-    output.MUTATORset("");
-    BEGINLOOPUNTIL (counter.CONSTANTequals(input.CONSTANTgetLength()));
-        current.MUTATORset(input.CONSTANTgetAt(counter.CONSTANTCOPY()));
-        output.MUTATORappend(current.CONSTANTencrypt(key.CONSTANTCOPY()));
+            counter.MUTATORset(counter.CONSTANTaddCharacterString("1"));
+        ENDLOOPUNTIL (counter.CONSTANTequals(input.CONSTANTgetLength()));
 
-        counter.MUTATORset(counter.CONSTANTaddCharacterString("1"));
-    ENDLOOPUNTIL (counter.CONSTANTequals(input.CONSTANTgetLength()));
+        OUTPUT("En-/Decoded message: ");
+        OUTPUT(output.CONSTANTCOPY());
+        OUTPUTLINE("");
 
-    OUTPUT("En-/Decoded message: ");
-    OUTPUT(output.CONSTANTCOPY());
-    OUTPUTLINE("");
+        OUTPUT("Do you want to en-/decrypt another message (yes/no)?");
+        input.MUTATORset(INPUTLINE);
+    ENDLOOPUNTIL(input.CONSTANTequals("no"));
 
     input.EMPTY();
     output.EMPTY();
